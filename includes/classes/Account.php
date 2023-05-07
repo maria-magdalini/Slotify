@@ -1,11 +1,12 @@
 <?php 
 class Account {
 
+    private $con;
     private $errorArray;
     
     
-        public function __construct(){
-            
+        public function __construct($con){
+            $this->con = $con;
             $this->errorArray = array();
         }
 
@@ -18,7 +19,7 @@ class Account {
 
         if(empty($this->errorArray) == true){
             //Inserting data into database
-            return true;
+            return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
         }
         else{
             return false;
@@ -36,6 +37,16 @@ class Account {
 
 
     }
+
+            private function insertUserDetails($un, $fn, $ln, $em, $pw){
+                    $encryptedPw = md5($pw);
+                    $profilePic = "assets/images/profilePics/cena.jpg";
+                    $date = date("Y-m-d");
+
+                    $result = mysqli_query($this->con,"INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPw','$date', '$profilePic')");
+                    return $result;
+            }
+
             private function validateUsername($un){
                     if (strlen($un) > 25 || strlen($un) < 5){
                         array_push($this->errorArray, "Username must be between 5 and 25 characters");
@@ -53,7 +64,7 @@ class Account {
             
             private function validateLastName($ln){
                 if (strlen($ln) > 25 || strlen($ln) < 2){
-                    array_push($this->errorArray, " Lastname must be between 2 and 25 characters");
+                    array_push($this->errorArray, "Lastname must be between 2 and 25 characters");
                     return;
                 }
             }
