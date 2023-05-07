@@ -10,6 +10,20 @@ class Account {
             $this->errorArray = array();
         }
 
+        public function login($un,$pw){
+            $pw = md5($pw);
+
+            $query = mysqli_query($this->con, "SELECT * FROM users WHERE username='$un' AND password = '$pw'");
+
+            if(mysqli_num_rows($query) == 1){
+                return true;
+            }
+            else{
+                array_push($this->errorArray, Constants::$loginFailed);
+                return false;
+            }
+        }
+
     public function register($un, $fn, $ln, $em, $em2, $pw, $pw2){
         $this->validateUsername($un);
         $this->validateFirstName($fn);
@@ -43,6 +57,8 @@ class Account {
                     $profilePic = "assets/images/profilePics/cena.jpg";
                     $date = date("Y-m-d");
 
+
+                        //$result will return true or false after querying
                     $result = mysqli_query($this->con,"INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPw','$date', '$profilePic')");
                     return $result;
             }
@@ -53,6 +69,13 @@ class Account {
                         return;
                     }
                     //todo: check if username exists
+                    $checkUsername = mysqli_query($this->con , "SELECT username FROM users WHERE username = '$un'");
+                    if(mysqli_num_rows($checkUsername)!=0)//returns how many usernames in db match $un
+                    {
+                      //if any matches add the error in the array
+                        array_push($this->errorArray, Constants::$usernameTaken);
+                        return;
+                    }
             }
             
             private function validateFirstName($fn){
@@ -78,6 +101,14 @@ class Account {
                     array_push($this->errorArray, "Email is invalid");
                     return;
                 }
+                $checkEmail = mysqli_query($this->con , "SELECT email FROM users WHERE email = '$em'");
+                    if(mysqli_num_rows($checkEmail)!=0)//returns how many emails in db match $em
+                    {
+                      //if any matches add the error in the array
+                        array_push($this->errorArray, Constants::$emailTaken);
+                        return;
+                    }
+            
 
                 //todo: check that username hasnt been taken
             }

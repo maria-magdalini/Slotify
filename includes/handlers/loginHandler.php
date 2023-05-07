@@ -1,6 +1,17 @@
 <?php
-if (isset($_POST['loginButton'])) {
-	// echo "Login Button Pressed\n";
+if(isset($_POST['loginButton'])) {
+	$username = $_POST['loginUsername'];
+	$password = $_POST['loginPassword'];
+
+	$result = $account->login($username, 
+		$password);
+
+	if($result == true){
+		$_SESSION['userLogedIn'] = $username;
+		header("Location: index.php");
+	}
+
+	
 }
 
 ?>

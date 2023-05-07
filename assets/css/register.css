@@ -1,0 +1,107 @@
+body{
+	padding: 0;
+	margin:0;
+	height: 100%;
+}
+
+p{
+font-size: 18px;
+color:white;
+}
+
+#background{
+
+	background-image: url("../images/background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+/*	background-position: center;*/
+	height: 100%;
+	width: 100%;
+}
+
+#loginContainer *{
+	font-family:'helvetica', 'ariel', 'sans-serif';
+	color: white;
+	line-height: 1em;
+	box-sizing: border-box;
+
+}
+
+#loginContainer{
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	max-width: 1024px;
+	padding: 20px 0px;
+
+
+}
+
+#inputContainer{
+	border-right: 1px solid white;
+	width: 400px;
+}
+
+#inputContainer h2 {
+	text-align: center;
+
+}
+
+input
+{
+	display: block;
+	background-color: transparent;
+	border:0;
+	border-bottom: 1px solid white;
+	width: 90%;
+}
+
+input::placeholder{
+	color: #b1b1b1;
+}
+
+#inputContainer label{
+	color: white;
+	margin-top: 15px;
+
+}
+
+#inputContainer button{
+	background: transparent;
+	padding: 7px;
+	display: block;
+	border: 1px solid white;
+	border-radius: 15px;
+	margin: 0 auto;
+}
+
+@keyframes expand{
+	0%{
+		width: 65px;
+	}
+	50%{
+		width: 80px;
+	}
+	100%{
+		width: 100px;
+	}
+}
+
+#inputContainer button:hover{
+	animation: expand .2s ease-in forwards;
+	cursor: pointer;
+	
+	
+}
+
+.hasAccountText  {
+	text-align: center;
+	padding: 10px 0;
+	cursor: pointer;
+
+}
+
+#registerForm,
+#loginForm{
+	display: none;
+}
