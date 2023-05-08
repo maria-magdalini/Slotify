@@ -12,7 +12,7 @@ include ('includes/handlers/loginHandler.php');
 
 function getInputValue($name) {
 	if(isset($_POST[$name])) {
-		echo $_POST[$name];
+		echo $_POST[$name]; // keeps the the valueof input field in case of failed validation
 	}
 }
 
@@ -60,7 +60,7 @@ function getInputValue($name) {
 						echo $account->getError(Constants::$loginFailed);
 						?>
 						<label for="loginUsername">Username</label>
-						<input id="loginUsername" name="loginUsername" type="text" placeholder="e.g. bartSimpson" required>
+						<input id="loginUsername" name="loginUsername" type="text" placeholder="e.g. bartSimpson" value="<?php getInputValue('loginUsername') ?>" required>
 					</p>
 					<p>
 						<label for="loginPassword">Password</label>
@@ -145,6 +145,18 @@ function getInputValue($name) {
 					
 				</form>
 
+			</div>
+
+			<div id="loginText">
+				<h1>Millions of songs for free.</h1>
+				<h2>Subscribe now.</h2>
+
+				<ul>
+					<li>Discover music you'll love</li>
+					<li>Create your own playlist</li>
+					<li>Follow artists you love</li>
+
+				</ul>
 			</div>
 
 		  </div>

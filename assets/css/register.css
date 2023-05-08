@@ -33,6 +33,9 @@ color:white;
 	position: relative;
 	max-width: 1024px;
 	padding: 20px 0px;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
 
 
 }
@@ -104,4 +107,43 @@ input::placeholder{
 #registerForm,
 #loginForm{
 	display: none;
+}
+
+#loginText{
+	position: relative;
+	display: table-cell;
+	
+}
+
+#loginText h1{
+	text-align: center;
+	color: #c7d6c0;
+	font-size: 3em;
+}
+
+#loginText h2{
+	
+	color: #c0ceb2;
+	font-size: 2em;
+}
+
+#loginText ul{
+	list-style: none;
+	padding: 0;
+
+}
+
+#loginText ul li{
+padding: 10px 40px;
+background-image: url(../images/icons/check.png);
+background-repeat: no-repeat;
+background-size: 30px;
+}
+
+#inputContainer .errorMessage{
+	color: #c7d6c0;
+	/* display: block; */
+	padding: 10px 0;
+	font-size: 1.1em;
+    margin-bottom: 20px;
 }

@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    height: 100%;
+}
+#nowPlayingBarContainer{
+ 
+background: black;
+bottom: 0;
+position: fixed;
+width: 100%;
+
+}
+
+#nowPlayingBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding: 50px;
+    box-sizing: border-box;
+    width: 100%;
+  
+}
+
+#nowPlayingLeft{
+width: 30%;
+
+
+}
+#nowPlayingCenter{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#nowPlayingRight{
+width: 30%;
+}
